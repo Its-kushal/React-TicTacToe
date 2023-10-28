@@ -1,7 +1,9 @@
 const Square = ({ value }) => {
     console.log(value);
     return (
-        <div>{value}</div>
+        <button type="button" className="square">
+            {value}
+        </button>
     );
 }
 

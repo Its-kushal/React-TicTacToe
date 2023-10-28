@@ -1,12 +1,11 @@
 // import { useState } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
-import Square from './Components/Square.jsx';
-import './App.css';
+import Board from './Components/Board.jsx';
+import './style.scss';
 
 function App() {
   // const [count, setCount] = useState(0)
-
   return (
     // <>
     //   <div>
@@ -30,12 +29,9 @@ function App() {
     //     Click on the Vite and React logos to learn more
     //   </p>
     // </>
-    <div>
-      <h1>Title</h1>
-      <Square value="kushal"/>
-      <Square value="trying"/>
-      <Square value="to"/>
-      <Square value="learn"/>
+    <div className='app'>
+      <h1>Tic Tac Toe</h1>
+      <div><Board /></div>
     </div>
   );
 }
