@@ -2,42 +2,45 @@ import { useState } from 'react';
 import Square from './Square';
 
 const Board = () => {
-  const { squares, setSaquares } = useState(Array(9).fill(null));
+  const [ squares, setSaquares ] = useState(Array(9).fill(null));
 
   const handleSquareClick = clickedPosition => {
     setSaquares(currentSquares => {
-        return currentSquares.map((squareValue, position) => {
-            if(clickedPosition === position){
-                return 'X';
-            }
-            
-            return squareValue;
-        });
-    })
+      return currentSquares.map((squareValue, position) => {
+        if (clickedPosition === position) {
+          return 'X';
+        }
+
+        return squareValue;
+      });
+    });
   };
 
-  const renderSquares = pos => {
+  const renderSquare = pos => {
     return (
-      <Square value={squares[pos]} onClick={() => handleSquareClick(pos)} />
+      <Square 
+        value={squares[pos]} 
+        onclick={() => handleSquareClick(pos)} 
+      />
     );
   };
 
   return (
     <div className="board">
       <div className="board-row">
-        {renderSquares(0)}
-        {renderSquares(1)}
-        {renderSquares(2)}
+        {renderSquare(0)}
+        {renderSquare(1)}
+        {renderSquare(2)}
       </div>
       <div className="board-row">
-        {renderSquares(3)}
-        {renderSquares(4)}
-        {renderSquares(5)}
+        {renderSquare(3)}
+        {renderSquare(4)}
+        {renderSquare(5)}
       </div>
       <div className="board-row">
-        {renderSquares(6)}
-        {renderSquares(7)}
-        {renderSquares(8)}
+        {renderSquare(6)}
+        {renderSquare(7)}
+        {renderSquare(8)}
       </div>
     </div>
   );
