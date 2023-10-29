@@ -1,26 +1,24 @@
-import { useState } from 'react'
+import { useState } from 'react';
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
-import Board from './Components/Board.jsx';
 import './style.scss';
+import Board from './Components/Board.jsx';
 import { calculateWinner } from './winner.js';
+import StatusMessage from './Components/StatusMessage';
 
 function App() {
   // const [count, setCount] = useState(0)
 
-  const [ squares, setSaquares ] = useState(Array(9).fill(null));
-  const [ isXNext, setIsXNext ] = useState(true);
+  const [squares, setSaquares] = useState(Array(9).fill(null));
+  const [isXNext, setIsXNext] = useState(true);
 
   const winner = calculateWinner(squares);
-  const nextPlayer = isXNext ? 'X' : '0';
-  const statusMessage = winner ? `Winner is ${winner}` : `Next Player is ${nextPlayer}`;
 
   const handleSquareClick = clickedPosition => {
-    
-    if(squares[clickedPosition] || winner){
-      return; 
+    if (squares[clickedPosition] || winner) {
+      return;
     }
-    
+
     setSaquares(currentSquares => {
       return currentSquares.map((squareValue, position) => {
         if (clickedPosition === position) {
@@ -31,17 +29,21 @@ function App() {
       });
     });
 
-    setIsXNext((currentIsXNext) => !currentIsXNext);
+    setIsXNext(currentIsXNext => !currentIsXNext);
   };
 
   return (
-    <div className='app'>
+    <div className="app">
       <h1>Tic Tac Toe</h1>
-      <h3>{statusMessage}</h3>
-      <div><Board squares={squares} handleSquareClick={handleSquareClick}/></div>
-      <h3>{winner}</h3>
+      <StatusMessage winner={winner} isXNext={isXNext} squares={squares} />
+      <div>
+        <Board squares={squares} handleSquareClick={handleSquareClick} />
+      </div>
+      <h3>
+        <span className={winner ? 'text-green' : 'text-orange'}>{winner}</span>
+      </h3>
     </div>
   );
 }
 
-export default App
+export default App;
