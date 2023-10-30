@@ -35,7 +35,8 @@ button {
 }
 
 .history-wrapper {
-  width: 300px;
+  // width: 300px;
+  // margin-top: 5px;
   text-align: center;
   margin-bottom: 20px;
   .history {
@@ -169,4 +170,8 @@ button {
       left: -110px;
     }
   }
+}
+
+.hisTitle{
+  text-align: center;
 }
