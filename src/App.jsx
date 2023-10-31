@@ -72,7 +72,7 @@ function App() {
           New Game
         </button>
 
-        <h3 className="hisTitle">Game History</h3>
+        <h3 className="hisTitle">Current Game History</h3>
         <History history={history} moveTo={moveTo} currentMove={currentMove} />
       </div>
       {/* <h3>
