@@ -5,10 +5,9 @@ import { calculateWinner } from './winner.js';
 import StatusMessage from './Components/StatusMessage';
 import History from './Components/History';
 
+const NEW_GAME = [{ squares: Array(9).fill(null), isXNext: true }];
 function App() {
-  const [history, setHistory] = useState([
-    { squares: Array(9).fill(null), isXNext: true },
-  ]);
+  const [history, setHistory] = useState(NEW_GAME);
   const [currentMove, setCurrentMove] = useState(0);
 
   const gamingBoard = history[currentMove];
@@ -39,7 +38,7 @@ function App() {
       );
 
       const base = isTraversing
-        ? currentHistory.slice(0, currentHistory.indexOf(lastGamingState)+1)
+        ? currentHistory.slice(0, currentHistory.indexOf(lastGamingState) + 1)
         : currentHistory;
       return base.concat({
         squares: nextSqauresState,
@@ -54,9 +53,14 @@ function App() {
     setCurrentMove(move);
   };
 
+  const onNewGameStart = () => {
+    setHistory(NEW_GAME);
+    setCurrentMove(0);
+  };
+
   return (
     <div className="app">
-      <h1>Tic Tac Toe</h1>
+      {/* <h1>Tic Tac Toe</h1> */}
       <StatusMessage winner={winner} gamingBoard={gamingBoard} />
       <div>
         <Board
@@ -64,7 +68,11 @@ function App() {
           handleSquareClick={handleSquareClick}
         />
 
-        <h3 className='hisTitle'>Game History</h3>
+        <button type="button" onClick={onNewGameStart} className={`btn-reset ${ winner ? `active` : ``}`}>
+          New Game
+        </button>
+
+        <h3 className="hisTitle">Game History</h3>
         <History history={history} moveTo={moveTo} currentMove={currentMove} />
       </div>
       {/* <h3>
