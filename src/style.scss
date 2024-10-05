@@ -14,8 +14,12 @@ button {
   background: none;
   border: none;
   outline: none;
+  transition: all 0.3s ease;
+  
   &:hover {
     cursor: pointer;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   }
 }
 
@@ -35,17 +39,18 @@ button {
 }
 
 .history-wrapper {
-  // width: 300px;
-  // margin-top: 5px;
   text-align: center;
   margin-bottom: 20px;
+
   .history {
     display: inline-block;
     padding: 0;
     margin: 0;
+
     li {
       list-style: none;
       text-align: left;
+
       &:before {
         content: '';
         border-radius: 50%;
@@ -59,9 +64,15 @@ button {
 
       .btn-move {
         color: #fff;
+        transition: color 0.2s;
+
         &.active {
           font-weight: bold;
           color: $green;
+        }
+
+        &:hover {
+          color: $orange;
         }
       }
     }
@@ -72,6 +83,7 @@ button {
   margin-bottom: 30px;
   font-size: 1.2rem;
   font-weight: lighter;
+
   span {
     font-weight: normal;
   }
@@ -84,9 +96,15 @@ button {
   padding: 12px 18px;
   margin-top: 25px;
   margin-left: 70px;
-  transition: all 0.2s;
+  transition: background-color 0.3s, box-shadow 0.3s;
   background-color: $blue;
   box-shadow: 0px 0px 0px 1px $orange;
+
+  &:hover {
+    background-color: darken($orange, 10%);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  }
+
   &.active {
     background-color: $orange;
     box-shadow: none;
@@ -99,9 +117,11 @@ button {
     display: flex;
     flex-direction: row;
     border-bottom: 2px solid #fff;
+
     &:last-child {
       border-bottom: none;
     }
+
     .square {
       width: 80px;
       height: 80px;
@@ -110,14 +130,21 @@ button {
       padding: 0;
       overflow: hidden;
       transition: all 0.2s;
+
       &:last-child {
         border-right: none;
       }
+
+      &:hover {
+        background-color: lighten($blue, 5%);
+      }
+
       &.winning {
         animation: scaleText 1.4s infinite;
+
         @keyframes scaleText {
           0% {
-            transform: 2.5rem;
+            font-size: 2.5rem;
           }
           50% {
             font-size: 3.5rem;
@@ -153,6 +180,7 @@ button {
     background-color: $orange;
     right: -75px;
     bottom: -75px;
+
     @media screen and (min-width: 476px) {
       width: 220px;
       height: 220px;
@@ -165,6 +193,7 @@ button {
     background-color: $green;
     top: -75px;
     left: -75px;
+
     @media screen and (min-width: 476px) {
       width: 220px;
       height: 220px;
@@ -174,6 +203,41 @@ button {
   }
 }
 
-.hisTitle{
+.hisTitle {
   text-align: center;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: $orange;
+}
+
+// Improved Responsiveness
+@media screen and (max-width: 768px) {
+  .board-row {
+    .square {
+      width: 60px;
+      height: 60px;
+      font-size: 2rem;
+    }
+  }
+
+  .btn-reset {
+    margin-left: 0;
+    padding: 10px 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .board-row {
+    .square {
+      width: 50px;
+      height: 50px;
+      font-size: 1.5rem;
+    }
+  }
+
+  .btn-reset {
+    margin-left: 0;
+    padding: 8px 12px;
+  }
 }
