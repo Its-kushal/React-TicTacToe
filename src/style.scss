@@ -1,11 +1,14 @@
-$green: #12e177;
-$orange: #ffc72a;
-$blue: #4c43d4;
+$green: #0fffc7; // Neon green for cyberpunk glow
+$orange: #ff005b; // Vibrant pinkish-orange for highlights
+$blue: #121212; // Dark background color
+$purple: #9933ff; // Accent color for a more premium look
+$neon-blue: #0abdc6; // Neon blue for additional contrast
+$neon-pink: #ff4dff; // Neon pink for pop
 
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: $blue;
-  color: #fff;
+  background: radial-gradient(circle, $blue 0%, #000000 100%);
+  color: $neon-blue;
   padding: 0;
   margin: 0;
 }
@@ -15,11 +18,13 @@ button {
   border: none;
   outline: none;
   transition: all 0.3s ease;
-  
+  color: $neon-pink;
+
   &:hover {
     cursor: pointer;
     transform: scale(1.05);
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 4px 8px $neon-pink;
+    color: $green;
   }
 }
 
@@ -28,19 +33,30 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: $neon-blue;
+  text-shadow:
+    0 0 5px $neon-blue,
+    0 0 10px $purple;
 }
 
 .text-green {
   color: $green;
+  text-shadow:
+    0 0 5px $green,
+    0 0 10px $green;
 }
 
 .text-orange {
   color: $orange;
+  text-shadow:
+    0 0 5px $orange,
+    0 0 10px $orange;
 }
 
 .history-wrapper {
   text-align: center;
   margin-bottom: 20px;
+  color: $neon-blue;
 
   .history {
     display: inline-block;
@@ -50,6 +66,8 @@ button {
     li {
       list-style: none;
       text-align: left;
+      color: $neon-pink;
+      text-shadow: 0 0 5px $neon-pink;
 
       &:before {
         content: '';
@@ -63,7 +81,7 @@ button {
       }
 
       .btn-move {
-        color: #fff;
+        color: $neon-blue;
         transition: color 0.2s;
 
         &.active {
@@ -72,7 +90,10 @@ button {
         }
 
         &:hover {
-          color: $orange;
+          color: $neon-pink;
+          text-shadow:
+            0 0 5px $neon-pink,
+            0 0 10px $neon-pink;
         }
       }
     }
@@ -83,26 +104,33 @@ button {
   margin-bottom: 30px;
   font-size: 1.2rem;
   font-weight: lighter;
+  color: $neon-blue;
+  text-shadow:
+    0 0 5px $neon-blue,
+    0 0 10px $neon-blue;
 
   span {
     font-weight: normal;
+    color: $purple;
   }
 }
 
 .btn-reset {
   font-size: 0.8rem;
-  color: #fff;
+  color: $neon-pink;
   border-radius: 15px;
   padding: 12px 18px;
   margin-top: 25px;
   margin-left: 70px;
-  transition: background-color 0.3s, box-shadow 0.3s;
-  background-color: $blue;
-  box-shadow: 0px 0px 0px 1px $orange;
+  background: linear-gradient(145deg, $purple, $neon-pink);
+  box-shadow: 0px 0px 8px 2px $purple;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
 
   &:hover {
-    background-color: darken($orange, 10%);
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(145deg, $green, $neon-blue);
+    box-shadow: 0px 4px 10px $neon-blue;
   }
 
   &.active {
@@ -116,7 +144,7 @@ button {
   .board-row {
     display: flex;
     flex-direction: row;
-    border-bottom: 2px solid #fff;
+    border-bottom: 2px solid $neon-pink;
 
     &:last-child {
       border-bottom: none;
@@ -125,8 +153,10 @@ button {
     .square {
       width: 80px;
       height: 80px;
-      border-right: 2px solid #fff;
+      border-right: 2px solid $neon-pink;
       font-size: 2.5rem;
+      color: $neon-blue;
+      text-shadow: 0 0 5px $neon-blue;
       padding: 0;
       overflow: hidden;
       transition: all 0.2s;
@@ -137,6 +167,7 @@ button {
 
       &:hover {
         background-color: lighten($blue, 5%);
+        box-shadow: inset 0px 0px 10px $neon-pink;
       }
 
       &.winning {
@@ -166,6 +197,7 @@ button {
   bottom: 0;
   min-width: 100%;
   z-index: -1;
+  background: radial-gradient(circle, $blue, #000000);
 
   &:before,
   &:after {
@@ -180,6 +212,7 @@ button {
     background-color: $orange;
     right: -75px;
     bottom: -75px;
+    box-shadow: 0 0 15px $orange;
 
     @media screen and (min-width: 476px) {
       width: 220px;
@@ -193,6 +226,7 @@ button {
     background-color: $green;
     top: -75px;
     left: -75px;
+    box-shadow: 0 0 15px $green;
 
     @media screen and (min-width: 476px) {
       width: 220px;
@@ -208,7 +242,10 @@ button {
   margin-bottom: 15px;
   font-size: 1.5rem;
   font-weight: bold;
-  color: $orange;
+  color: $neon-pink;
+  text-shadow:
+    0 0 10px $neon-pink,
+    0 0 20px $purple;
 }
 
 // Improved Responsiveness
