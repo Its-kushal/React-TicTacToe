@@ -1,30 +1,35 @@
-$green: #0fffc7; // Neon green for cyberpunk glow
-$orange: #ff005b; // Vibrant pinkish-orange for highlights
-$blue: #121212; // Dark background color
-$purple: #9933ff; // Accent color for a more premium look
-$neon-blue: #0abdc6; // Neon blue for additional contrast
-$neon-pink: #ff4dff; // Neon pink for pop
+$green: #12e177;
+$orange: #ffc72a;
+$blue: #0f0f0f; // changed from deep blue to true neon-dark
+
+$neon-glow: 0 0 5px, 0 0 10px, 0 0 15px;
+$transition-fast: all 0.2s ease-in-out;
 
 body {
-  font-family: 'Roboto', sans-serif;
-  background: radial-gradient(circle, $blue 0%, #000000 100%);
-  color: $neon-blue;
+  font-family: 'Orbitron', sans-serif;
+  background-color: $blue;
+  color: $green;
   padding: 0;
   margin: 0;
+  text-shadow: 0 0 5px $green;
 }
 
 button {
   background: none;
-  border: none;
-  outline: none;
-  transition: all 0.3s ease;
-  color: $neon-pink;
+  border: 2px solid $green;
+  color: $green;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-shadow: $neon-glow $green;
+  box-shadow: inset 0 0 10px $green, 0 0 15px $green;
+  transition: $transition-fast;
 
   &:hover {
     cursor: pointer;
-    transform: scale(1.05);
-    box-shadow: 0px 4px 8px $neon-pink;
-    color: $green;
+    background-color: $green;
+    color: $blue;
+    box-shadow: 0 0 20px $green;
   }
 }
 
@@ -33,30 +38,21 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: $neon-blue;
-  text-shadow:
-    0 0 5px $neon-blue,
-    0 0 10px $purple;
 }
 
 .text-green {
   color: $green;
-  text-shadow:
-    0 0 5px $green,
-    0 0 10px $green;
+  text-shadow: $neon-glow $green;
 }
 
 .text-orange {
   color: $orange;
-  text-shadow:
-    0 0 5px $orange,
-    0 0 10px $orange;
+  text-shadow: $neon-glow $orange;
 }
 
 .history-wrapper {
   text-align: center;
   margin-bottom: 20px;
-  color: $neon-blue;
 
   .history {
     display: inline-block;
@@ -66,8 +62,6 @@ button {
     li {
       list-style: none;
       text-align: left;
-      color: $neon-pink;
-      text-shadow: 0 0 5px $neon-pink;
 
       &:before {
         content: '';
@@ -78,22 +72,17 @@ button {
         background-color: $green;
         margin-right: 4px;
         margin-bottom: 1px;
+        box-shadow: 0 0 10px $green;
       }
 
       .btn-move {
-        color: $neon-blue;
-        transition: color 0.2s;
+        color: #fff;
+        transition: $transition-fast;
 
         &.active {
           font-weight: bold;
           color: $green;
-        }
-
-        &:hover {
-          color: $neon-pink;
-          text-shadow:
-            0 0 5px $neon-pink,
-            0 0 10px $neon-pink;
+          text-shadow: $neon-glow $green;
         }
       }
     }
@@ -104,39 +93,32 @@ button {
   margin-bottom: 30px;
   font-size: 1.2rem;
   font-weight: lighter;
-  color: $neon-blue;
-  text-shadow:
-    0 0 5px $neon-blue,
-    0 0 10px $neon-blue;
+  color: $orange;
+  text-shadow: $neon-glow $orange;
 
   span {
     font-weight: normal;
-    color: $purple;
+    color: $green;
+    text-shadow: $neon-glow $green;
   }
 }
 
 .btn-reset {
   font-size: 0.8rem;
-  color: $neon-pink;
+  color: #fff;
   border-radius: 15px;
   padding: 12px 18px;
   margin-top: 25px;
   margin-left: 70px;
-  background: linear-gradient(145deg, $purple, $neon-pink);
-  box-shadow: 0px 0px 8px 2px $purple;
-  transition:
-    background-color 0.3s,
-    box-shadow 0.3s;
-
-  &:hover {
-    background: linear-gradient(145deg, $green, $neon-blue);
-    box-shadow: 0px 4px 10px $neon-blue;
-  }
+  transition: $transition-fast;
+  background-color: transparent;
+  border: 2px solid $orange;
+  box-shadow: 0 0 10px $orange, inset 0 0 5px $orange;
 
   &.active {
     background-color: $orange;
+    color: #333;
     box-shadow: none;
-    color: grey;
   }
 }
 
@@ -144,7 +126,7 @@ button {
   .board-row {
     display: flex;
     flex-direction: row;
-    border-bottom: 2px solid $neon-pink;
+    border-bottom: 2px solid $green;
 
     &:last-child {
       border-bottom: none;
@@ -153,36 +135,39 @@ button {
     .square {
       width: 80px;
       height: 80px;
-      border-right: 2px solid $neon-pink;
+      border-right: 2px solid $green;
       font-size: 2.5rem;
-      color: $neon-blue;
-      text-shadow: 0 0 5px $neon-blue;
       padding: 0;
       overflow: hidden;
-      transition: all 0.2s;
+      background: transparent;
+      color: $orange;
+      text-shadow: $neon-glow $orange;
+      transition: $transition-fast;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 0 10px $orange;
+      }
 
       &:last-child {
         border-right: none;
       }
 
-      &:hover {
-        background-color: lighten($blue, 5%);
-        box-shadow: inset 0px 0px 10px $neon-pink;
-      }
-
       &.winning {
         animation: scaleText 1.4s infinite;
+        color: #faff00;
+        text-shadow: 0 0 15px #faff00;
+      }
 
-        @keyframes scaleText {
-          0% {
-            font-size: 2.5rem;
-          }
-          50% {
-            font-size: 3.5rem;
-          }
-          100% {
-            font-size: 2.5rem;
-          }
+      @keyframes scaleText {
+        0% {
+          font-size: 2.5rem;
+        }
+        50% {
+          font-size: 3.5rem;
+        }
+        100% {
+          font-size: 2.5rem;
         }
       }
     }
@@ -197,7 +182,6 @@ button {
   bottom: 0;
   min-width: 100%;
   z-index: -1;
-  background: radial-gradient(circle, $blue, #000000);
 
   &:before,
   &:after {
@@ -206,13 +190,13 @@ button {
     width: 150px;
     height: 150px;
     border-radius: 50%;
+    filter: blur(50px);
   }
 
   &:before {
     background-color: $orange;
     right: -75px;
     bottom: -75px;
-    box-shadow: 0 0 15px $orange;
 
     @media screen and (min-width: 476px) {
       width: 220px;
@@ -226,7 +210,6 @@ button {
     background-color: $green;
     top: -75px;
     left: -75px;
-    box-shadow: 0 0 15px $green;
 
     @media screen and (min-width: 476px) {
       width: 220px;
@@ -239,42 +222,7 @@ button {
 
 .hisTitle {
   text-align: center;
-  margin-bottom: 15px;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: $neon-pink;
-  text-shadow:
-    0 0 10px $neon-pink,
-    0 0 20px $purple;
-}
-
-// Improved Responsiveness
-@media screen and (max-width: 768px) {
-  .board-row {
-    .square {
-      width: 60px;
-      height: 60px;
-      font-size: 2rem;
-    }
-  }
-
-  .btn-reset {
-    margin-left: 0;
-    padding: 10px 15px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .board-row {
-    .square {
-      width: 50px;
-      height: 50px;
-      font-size: 1.5rem;
-    }
-  }
-
-  .btn-reset {
-    margin-left: 0;
-    padding: 8px 12px;
-  }
+  color: $green;
+  font-size: 1.4rem;
+  text-shadow: $neon-glow $green;
 }
